@@ -86,3 +86,51 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+let totalMonths
+let total = 0
+let averageChange
+let greatestIncreaseProfit
+let greatestDecreaseProfit
+
+// The total number of months included in the dataset.
+
+totalMonths = finances.length;
+
+// The net total amount of Profit/Losses over the entire period.
+
+for ( let i = 0; i < finances.length; i++ ) {
+    total = total + finances[i][1];
+};
+
+// The average of the changes in Profit/Losses over the entire period.
+let diffArr = [];
+
+for ( let i = 1; i < finances.length; i++ ) {
+    let current = finances[i][1] - finances[i - 1][1];
+    diffArr.push(current);
+};
+console.log(diffArr)
+
+let totaldif = 0;
+
+for ( let j = 0; j < diffArr; j++ ) {
+    totaldif = totaldif + diffArr[j];
+};
+
+console.log(`this is the totaldif ${totaldif}`)
+console.log(`this is the diffArr.length ${diffArr.length}`)
+averageChange = totaldif / diffArr.length;
+
+
+// Final resulting analisis
+
+console.log(
+    `    Financial Analysis
+    ----------------------------
+    Total Months: ${totalMonths}
+    Total: ${total}
+    Average Change: ${averageChange}
+    Greatest Increase in Profits: ${greatestIncreaseProfit}
+    Greatest Decrease in Profits: ${greatestDecreaseProfit}`
+)
