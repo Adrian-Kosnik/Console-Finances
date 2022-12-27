@@ -91,7 +91,7 @@ let totalMonths
 let total = 0
 let averageChange
 let greatestIncreaseProfit = [['', 0]]
-let greatestDecreaseProfit
+let greatestDecreaseProfit = [['', 0]]
 
 // The total number of months included in the dataset.
 
@@ -111,7 +111,6 @@ for ( let i = 1; i < finances.length; i++ ) {
     let current = finances[i][1] - finances[i - 1][1];
     diffArr.push(current);
 };
-console.log(diffArr)
 
 // Calculating the average
 const initialValue = 0;
@@ -126,7 +125,14 @@ averageChange = sumWithInitial / diffArr.length;
 for ( let k = 0; k < finances.length; k++ ) {
     if (finances[k][1] > greatestIncreaseProfit[0][1]) {
         greatestIncreaseProfit[0] = finances[k]
-        console.log(`this is the greatestIncreaseProfit ${greatestIncreaseProfit}`)
+    };
+};
+
+// The greatest decrease in losses (date and amount) over the entire period.
+
+for ( let f = 0; f < finances.length; f++ ) {
+    if (finances[f][1] < greatestDecreaseProfit[0][1]) {
+        greatestDecreaseProfit[0] = finances[f]
     };
 };
 
@@ -140,5 +146,5 @@ console.log(
     Total: $${total}
     Average Change: $${averageChange.toFixed(2)}
     Greatest Increase in Profits: ${greatestIncreaseProfit[0][0]} ($${greatestIncreaseProfit[0][1]})
-    Greatest Decrease in Profits: ${greatestDecreaseProfit}`
+    Greatest Decrease in Profits: ${greatestDecreaseProfit[0][0]} ($${greatestDecreaseProfit[0][1]})`
 )
