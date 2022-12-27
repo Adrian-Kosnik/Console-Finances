@@ -104,6 +104,7 @@ for ( let i = 0; i < finances.length; i++ ) {
 };
 
 // The average of the changes in Profit/Losses over the entire period.
+// Creating array of changes
 let diffArr = [];
 
 for ( let i = 1; i < finances.length; i++ ) {
@@ -112,15 +113,14 @@ for ( let i = 1; i < finances.length; i++ ) {
 };
 console.log(diffArr)
 
-let totaldif = 0;
+// Calculating the average
+const initialValue = 0;
+const sumWithInitial = diffArr.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  initialValue
+);
+averageChange = sumWithInitial / diffArr.length
 
-for ( let j = 0; j < diffArr; j++ ) {
-    totaldif = totaldif + diffArr[j];
-};
-
-console.log(`this is the totaldif ${totaldif}`)
-console.log(`this is the diffArr.length ${diffArr.length}`)
-averageChange = totaldif / diffArr.length;
 
 
 // Final resulting analisis
@@ -129,8 +129,8 @@ console.log(
     `    Financial Analysis
     ----------------------------
     Total Months: ${totalMonths}
-    Total: ${total}
-    Average Change: ${averageChange}
-    Greatest Increase in Profits: ${greatestIncreaseProfit}
-    Greatest Decrease in Profits: ${greatestDecreaseProfit}`
+    Total: $${total}
+    Average Change: $${averageChange.toFixed(2)}
+    Greatest Increase in Profits: $${greatestIncreaseProfit}
+    Greatest Decrease in Profits: $${greatestDecreaseProfit}`
 )
